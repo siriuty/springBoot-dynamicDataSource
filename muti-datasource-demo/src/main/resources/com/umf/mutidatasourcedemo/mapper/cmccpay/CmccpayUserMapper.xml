@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.umf.mutidatasourcedemo.mapper.cmccpay.CmccpayUserMapper">
+	<resultMap id="BaseResultMap" type="com.umf.mutidatasourcedemo.entity.SysUserEntity" >
+		<id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+		<result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="DECIMAL" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="DEPT" property="dept" jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="DECIMAL" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="EMPLOYEEID" property="employeeId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+        USER_ID, USERNAME, PASSWORD, EMAIL, MOBILE, STATUS, CREATE_TIME, DEPT, SEX, ADDRESS,
+        EMPLOYEEID
+    </sql>
+	<select id="selectByUserId" resultMap="BaseResultMap">
+		select  <include refid="Base_Column_List" /> from CMCCPAYDEV.sys_user where user_id = #{value}
+	</select>
+</mapper>
